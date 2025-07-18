@@ -11,8 +11,8 @@ management:
       base-path: /
       exposure:
         include: "*"
-#        exclude:
-#          - beans
+        exclude:
+         - beans
   endpoint:
     health:
       show-details: always			
@@ -21,3 +21,9 @@ management:
       enabled: true
 server:
   port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ostock_dev
+    username: postgres
+    password: "{cipher}afb2d19f737cc1bbdbe30a195667415e3c0159ddf88e2023df9cdd28a8260b3d"
