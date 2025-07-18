@@ -1,6 +1,6 @@
 custom:
     name: develop
 example:
-    property: "I AM DEV"
+    property: "I AM DEV ~(^^)~"
 server:
   port: 8083
