@@ -1,9 +1,9 @@
-spring:
-  application:
-    name: license-service
-  profiles:
-    active:
-    - dev
+# spring:
+#   application:
+#     name: license-service
+#   profiles:
+#     active:
+#     - dev
     
 management:
   endpoints:
@@ -19,3 +19,5 @@ management:
   health:
     diskspace:
       enabled: true
+server:
+  port: 8082

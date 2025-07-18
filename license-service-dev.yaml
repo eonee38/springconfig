@@ -1,5 +1,0 @@
-spring:
-    application:
-        name: license-service-DEV
-custom:
-    name: develop
