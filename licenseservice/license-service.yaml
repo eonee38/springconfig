@@ -27,3 +27,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/ostock_dev
     username: postgres
     password: "{cipher}afb2d19f737cc1bbdbe30a195667415e3c0159ddf88e2023df9cdd28a8260b3d"
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+  instance: 
+    preferIpAddress: true 

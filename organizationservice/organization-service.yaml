@@ -1,0 +1,8 @@
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+  instance:
+    preferIpAddress: true #(필수아님)등록할 때 이름이 아닌, IP주소 기반으로 등록하라.

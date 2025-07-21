@@ -1,0 +1,18 @@
+#organization 동작과 관련한 설정을 기술
+spring: 
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/ostock_dev
+    username: postgres
+    password: "{cipher}afb2d19f737cc1bbdbe30a195667415e3c0159ddf88e2023df9cdd28a8260b3d"
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+management:
+  endpoints:
+    web:  
+      exposure:
+        include: "*"
