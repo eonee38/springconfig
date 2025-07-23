@@ -1,6 +1,6 @@
 #게이트웨이 서버 설정 파일에 유레카 구성 정보를 추가 ⇒ 컨피그 서버 저장소에 gateway-server.yml 파일에 추가
 server:
-  port: 8072
+  port: 8072  #게이트 웨이 실행 포트
 eureka:
   client:
     registerWithEureka: true
@@ -8,4 +8,14 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
   instance:
-    preferIpAddress: true #(필수아님)등록할 때 이름이 아닌, IP주소 기반으로 등록하라.
+    preferIpAddress: true #유레카에 등록할 때, 호스트명이 아닌, IP주소 기반으로 등록하라. (내부 DNS 환경이 없거나 IP 기반 접근을 원할 때 유용)
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true # 유레카에 등록된 서비스들을 자동으로 라우팅 가능하게 함
+              lowerCaseServiceId: true   #	서비스 ID를 소문자로 변환해서 사용 (URL 경로를 소문자로 처리)
