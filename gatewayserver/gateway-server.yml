@@ -18,4 +18,15 @@ spring:
           discovery:
             locator:
               enabled: true # 유레카에 등록된 서비스들을 자동으로 라우팅 가능하게 함
-              lowerCaseServiceId: true   #	서비스 ID를 소문자로 변환해서 사용 (URL 경로를 소문자로 처리)
+              lowerCaseServiceId: true   #	서비스 ID를 소문자로 변환해서 사용 (URL 경로를 소문자로 처리)  --유레카대시보드에는 대문자로 표시되고 잇음
+
+
+#게이트웨이 서버가 관리하는 경로를 확인(p.295) actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      access: unrestricted #게이트웨이 엔트포인트에 누구나 접근 허용 | #authenticated(인증받은사람만.) #roll~머시기 
