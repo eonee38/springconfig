@@ -19,6 +19,19 @@ spring:
             locator:
               enabled: true # 유레카에 등록된 서비스들을 자동으로 라우팅 가능하게 함
               lowerCaseServiceId: true   #	서비스 ID를 소문자로 변환해서 사용 (URL 경로를 소문자로 처리)  --유레카대시보드에는 대문자로 표시되고 잇음
+            routes:
+              - id: license-service
+                predicates:  #맵핑
+                  - Path=/licsvc/**
+                uri: lb://LICENSE-SERVICE
+                filters:  #필터적용
+                  - RewritePath=/licsvc/(?<segment>.*), /v1/${segment} #segment는 변수이름이라 다른걸로 지정해도됨. #서비스구분접두어(licsvc) -> v1으로
+              - id: organization-service
+                predicates:
+                  - Path=/orgsvc/**
+                uri: lb://ORGANIZATION-SERVICE
+                filters:
+                  - RewritePath=/orgsvc/(?<segment>.*), /v1/${segment}
 
 
 #게이트웨이 서버가 관리하는 경로를 확인(p.295) actuator
@@ -29,4 +42,5 @@ management:
         include: "*"
   endpoint:
     gateway:
-      access: unrestricted #게이트웨이 엔트포인트에 누구나 접근 허용 | #authenticated(인증받은사람만.) #roll~머시기 
+      access: unrestricted #게이트웨이 엔트포인트에 누구나 접근 허용 | #authenticated(로그인된 사용자만 접근 가능) #role-based(특정 역할(Role)**을 가진 사용자만 액세스 가능) #authorized(추가적인 권한 제어를 위한 확장 설정)
+
