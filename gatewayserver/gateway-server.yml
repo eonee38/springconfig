@@ -1,0 +1,11 @@
+#게이트웨이 서버 설정 파일에 유레카 구성 정보를 추가 ⇒ 컨피그 서버 저장소에 gateway-server.yml 파일에 추가
+server:
+  port: 8072
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+  instance:
+    preferIpAddress: true #(필수아님)등록할 때 이름이 아닌, IP주소 기반으로 등록하라.
