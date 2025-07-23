@@ -22,16 +22,16 @@ spring:
           routes:
             - id: license-service
               predicates:  #맵핑
-                - Path=/licsvc/**
+                - Path=/newlicsvc/**
               uri: lb://LICENSE-SERVICE
               filters:  #필터적용
-                - RewritePath=/licsvc/(?<segment>.*), /v1/${segment} #segment는 변수이름이라 다른걸로 지정해도됨. #서비스구분접두어(licsvc) -> v1으로
+                - RewritePath=/newlicsvc/(?<segment>.*), /v1/${segment} #segment는 변수이름이라 다른걸로 지정해도됨. #서비스구분접두어(licsvc) -> v1으로
             - id: organization-service
               predicates:
-                - Path=/orgsvc/**
+                - Path=/neworgsvc/**
               uri: lb://ORGANIZATION-SERVICE
               filters:
-                - RewritePath=/orgsvc/(?<segment>.*), /v1/${segment}
+                - RewritePath=/neworgsvc/(?<segment>.*), /v1/${segment}
 
 
 #게이트웨이 서버가 관리하는 경로를 확인(p.295) actuator
